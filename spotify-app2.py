@@ -8,8 +8,8 @@ import numpy as np
 import time
 import webcolors
 from sklearn.metrics import mean_squared_error
-# import pigpio
-# pi = pigpio.pi()
+import pigpio
+pi = pigpio.pi()
 
 
 # export SPOTIPY_CLIENT_ID = "ab77ce1a99b54dfd8bae71d21d635ea4"
@@ -98,9 +98,9 @@ while True:
             nm = list(webcolors.CSS3_NAMES_TO_HEX.items())[closest_color][0]
             # print(nm)
             
-            # pi.set_PWM_dutycycle(17, dom_color[0])
-            # pi.set_PWM_dutycycle(22, dom_color[1])
-            # pi.set_PWM_dutycycle(24, dom_color[2])
+            pi.set_PWM_dutycycle(17, dom_color[0])
+            pi.set_PWM_dutycycle(22, dom_color[1])
+            pi.set_PWM_dutycycle(24, dom_color[2])
             
             time.sleep(3)
     else:
