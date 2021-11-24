@@ -2,12 +2,7 @@ import spotipy
 import spotipy.oauth2
 from colorthief import ColorThief
 import requests
-import seaborn as sns
-from PIL import Image
-import numpy as np
 import time
-import webcolors
-from sklearn.metrics import mean_squared_error
 import pigpio
 pi = pigpio.pi()
 
