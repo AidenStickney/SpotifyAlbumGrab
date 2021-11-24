@@ -8,6 +8,9 @@ import numpy as np
 import time
 import webcolors
 from sklearn.metrics import mean_squared_error
+# import pigpio
+# pi = pigpio.pi()
+
 
 # export SPOTIPY_CLIENT_ID = "ab77ce1a99b54dfd8bae71d21d635ea4"
 # export SPOTIPY_CLIENT_SECRET = "f8fd7485778245f3a27c3a5d32e1641f"
@@ -29,7 +32,9 @@ from sklearn.metrics import mean_squared_error
 
 # sp = spotipy.Spotify(str(token))
 
-token = str(input('Enter token: '))
+# token = str(input('Enter token: '))
+
+token = 'BQBcXUGbG-WbR70Awqya2ErJuO78bsJiXs8i2VggMhB6zfj2rtlsoviR7Gh6qYPUJnYfIWBnxdc1Q8iwnZtU3h0G6z0sd1ud0XT6_Su8bQbe_-0vml8cQu8DDhO0xZ-8ZkUcnQznr2bjviXKfQls42esbLQ9ZaAnhatQmJWg-3svgw'
 
 sp = spotipy.Spotify(token)
 
@@ -66,7 +71,7 @@ while True:
                 rms_lst.append(rmse)
                 closest_color = rms_lst.index(min(rms_lst))
                 nm = list(webcolors.CSS3_NAMES_TO_HEX.items())[closest_color][0]
-                print(nm)
+                # print(nm)
             
             title = "p"
             #creating bar image
@@ -81,18 +86,21 @@ while True:
             barImg = Image.fromarray(barFullData, 'RGB')
             
             #saving image
-            barImg.save("{}_{}.png".format(title,"method"))
-            barImg.show()
+            # barImg.save("{}_{}.png".format(title,"method"))
+            # barImg.show()
             
             
             dom_color = image.get_color(quality=1)
-            print(dom_color)
+            # print(dom_color)
             rmse = np.sqrt(mean_squared_error(dom_color, cur_clr))
             rms_lst.append(rmse)
             closest_color = rms_lst.index(min(rms_lst))
             nm = list(webcolors.CSS3_NAMES_TO_HEX.items())[closest_color][0]
-            print(nm)
+            # print(nm)
             
+            # pi.set_PWM_dutycycle(17, dom_color[0])
+            # pi.set_PWM_dutycycle(22, dom_color[1])
+            # pi.set_PWM_dutycycle(24, dom_color[2])
             
             time.sleep(3)
     else:
