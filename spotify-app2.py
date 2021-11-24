@@ -55,35 +55,35 @@ while True:
             
             # Find Dominant colors
             image = ColorThief(requests.get(album_artwork, stream=True).raw)
-            palette = image.get_palette(quality=1)
-            sns.palplot([tuple(i / 255 for i in j) for j in palette])
+            # palette = image.get_palette(quality=1)
+            # sns.palplot([tuple(i / 255 for i in j) for j in palette])
             
             # Bar Image
-            palette = (np.array(palette)).astype(np.uint8)
+            # palette = (np.array(palette)).astype(np.uint8)
             
             rms_lst = []
             
-            for img_clr, img_hex in webcolors.CSS3_NAMES_TO_HEX.items():
-                cur_clr = webcolors.hex_to_rgb(img_hex)
+            # for img_clr, img_hex in webcolors.CSS3_NAMES_TO_HEX.items():
+            #     cur_clr = webcolors.hex_to_rgb(img_hex)
             
-            for color in palette:
-                rmse = np.sqrt(mean_squared_error(color, cur_clr))
-                rms_lst.append(rmse)
-                closest_color = rms_lst.index(min(rms_lst))
-                nm = list(webcolors.CSS3_NAMES_TO_HEX.items())[closest_color][0]
+            # for color in palette:
+            #     rmse = np.sqrt(mean_squared_error(color, cur_clr))
+            #     rms_lst.append(rmse)
+            #     closest_color = rms_lst.index(min(rms_lst))
+            #     nm = list(webcolors.CSS3_NAMES_TO_HEX.items())[closest_color][0]
                 # print(nm)
             
-            title = "p"
-            #creating bar image
-            cols = len(palette)
-            rows = max([1,int(cols/2.5)])
+            # title = "p"
+            # #creating bar image
+            # cols = len(palette)
+            # rows = max([1,int(cols/2.5)])
             
             # Create color Array
-            barFullData = np.tile(palette, (rows,1)).reshape(rows, cols, 3)
+            # barFullData = np.tile(palette, (rows,1)).reshape(rows, cols, 3)
             
             
             # Create Image from Array
-            barImg = Image.fromarray(barFullData, 'RGB')
+            # barImg = Image.fromarray(barFullData, 'RGB')
             
             #saving image
             # barImg.save("{}_{}.png".format(title,"method"))
@@ -92,10 +92,10 @@ while True:
             
             dom_color = image.get_color(quality=1)
             # print(dom_color)
-            rmse = np.sqrt(mean_squared_error(dom_color, cur_clr))
-            rms_lst.append(rmse)
-            closest_color = rms_lst.index(min(rms_lst))
-            nm = list(webcolors.CSS3_NAMES_TO_HEX.items())[closest_color][0]
+            # rmse = np.sqrt(mean_squared_error(dom_color, cur_clr))
+            # rms_lst.append(rmse)
+            # closest_color = rms_lst.index(min(rms_lst))
+            # nm = list(webcolors.CSS3_NAMES_TO_HEX.items())[closest_color][0]
             # print(nm)
             
             pi.set_PWM_dutycycle(17, dom_color[0])
