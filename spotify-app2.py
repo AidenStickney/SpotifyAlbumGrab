@@ -29,7 +29,7 @@ pi = pigpio.pi()
 
 # token = str(input('Enter token: '))
 
-token = 'BQCQnTDDXJebkKNZFuXAwrDFJsGi18rTQdJUq5WPBuZw5AMBfXNdbFaZEmiijBlLmmxIp4-WMIADd14A72c9ruBG3MC6pQwvhvW89fGZv7Mvs3qSZ7MnSTl_M_O501wJaWmfUGNKgfA2oLxU_6pbEI33CgshE--oa_0-E6wQAJMS2w'
+token = 'BQDiLiQWXW2ZcTktHi23GTgWP0E2KtgxmsBL8AdSzcrbHdnpRBNoD8cUpCMivjqp6kIB_9eaUb4b6sk9cpm6VTBpwmvdfQ8VHysocqsXVC0ls4smHoNeODwLzQpLt0Zp4GFh4DthUBuTctLlLgkS0L0cV_UB4VFC1mDH39k4peznKQ'
 
 sp = spotipy.Spotify(token)
 
