@@ -29,7 +29,7 @@ pi = pigpio.pi()
 
 # token = str(input('Enter token: '))
 
-token = 'BQBcXUGbG-WbR70Awqya2ErJuO78bsJiXs8i2VggMhB6zfj2rtlsoviR7Gh6qYPUJnYfIWBnxdc1Q8iwnZtU3h0G6z0sd1ud0XT6_Su8bQbe_-0vml8cQu8DDhO0xZ-8ZkUcnQznr2bjviXKfQls42esbLQ9ZaAnhatQmJWg-3svgw'
+token = 'BQCQnTDDXJebkKNZFuXAwrDFJsGi18rTQdJUq5WPBuZw5AMBfXNdbFaZEmiijBlLmmxIp4-WMIADd14A72c9ruBG3MC6pQwvhvW89fGZv7Mvs3qSZ7MnSTl_M_O501wJaWmfUGNKgfA2oLxU_6pbEI33CgshE--oa_0-E6wQAJMS2w'
 
 sp = spotipy.Spotify(token)
 
@@ -49,6 +49,7 @@ while True:
             album_artwork = current_playback['item']['album']['images'][0]['url']
             
             # Find Dominant colors
+            print('Finding Colors')
             image = ColorThief(requests.get(album_artwork, stream=True).raw)
             # palette = image.get_palette(quality=1)
             # sns.palplot([tuple(i / 255 for i in j) for j in palette])
@@ -93,10 +94,12 @@ while True:
             # nm = list(webcolors.CSS3_NAMES_TO_HEX.items())[closest_color][0]
             # print(nm)
             
+            print('Changing Colors')
             pi.set_PWM_dutycycle(17, dom_color[0])
             pi.set_PWM_dutycycle(22, dom_color[1])
             pi.set_PWM_dutycycle(24, dom_color[2])
             
+            print('Sleeping for 3 secs.')
             time.sleep(3)
     else:
         print("Nothing Currently Playing")
